@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import './signup.css'
 
 function Signup(){
@@ -24,7 +25,7 @@ function Signup(){
 
                 <div className="box-right">
                     <h2 className="form-title">회원가입</h2>
-                    <p className="login-link">이미 계정이 있나요? <a href="#">로그인</a></p>
+                    <p className="login-link">이미 계정이 있나요? <Link to="/login">로그인</Link></p>
 
                     <form className="signup-form" onSubmit={handleSubmit}>
                         <label className="field">
@@ -47,11 +48,6 @@ function Signup(){
                                 <input type="password" required />
                             </label>
                         </div>
-
-                        <label className="field">
-                            <span>계좌 이름</span>
-                            <input type="text" defaultValue="기본 계좌" />
-                        </label>
 
                         <div className="deposit">
                             <span>초기 입금액</span>

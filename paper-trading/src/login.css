@@ -1,0 +1,141 @@
+:root {
+  background: #F4F5F7;
+}
+
+.login-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  width: 1076px;
+  min-height: 668px;
+  background-color: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 15px;
+  display: flex;
+  overflow: hidden;
+  text-align: left;
+}
+
+.login-left,
+.login-right {
+  flex: 1;
+  padding: 52px 42px;
+}
+
+/* 왼쪽 소개 영역 */
+.login-left {
+  background-color: #18191F;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-brand {
+  margin: 0 0 22px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.login-headline {
+  margin: 0 0 32px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: white;
+}
+
+.login-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+
+.login-steps li {
+  margin-bottom: 18px;
+}
+
+.login-step-num {
+  font-family: var(--mono);
+  font-weight: 700;
+  margin-right: 12px;
+}
+
+.login-notice {
+  margin-top: auto;   /* 맨 아래로 밀기 */
+  font-size: 13px;
+  color: #9CA3AF;
+}
+
+/* 오른쪽 로그인 폼 */
+.login-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* 입력칸이 적어서 세로 가운데로 */
+}
+
+.login-title {
+  margin: 0 0 6px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
+}
+
+.login-signup-link {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #4B5563;
+}
+
+.login-signup-link a {
+  color: #111;
+  font-weight: 700;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: #4B5563;
+}
+
+.login-field input {
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #111;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.login-field input:focus {
+  border-color: #18191F;
+}
+
+.login-btn {
+  height: 54px;
+  border: none;
+  border-radius: 8px;
+  background-color: #18191F;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #2B2D36;
+}
