@@ -1,0 +1,97 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0;
+  text-align: left;
+}
+
+.header-brand {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #18191F;
+}
+
+.header-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.header-link {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #4B5563;
+  text-decoration: none;
+}
+
+.header-link:hover {
+  background-color: #F3F4F6;
+}
+
+/* 현재 페이지 */
+.header-link.active {
+  background-color: #E5E7EB;
+  color: #18191F;
+  font-weight: 700;
+}
+
+/* 오른쪽 끝으로 밀기 */
+.user {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user p {
+  margin: 0;
+}
+
+.user-cash {
+  font-size: 14px;
+  color: #6B7280;
+}
+
+.user-cash strong {
+  margin-left: 4px;
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: 600;
+  color: #18191F;
+}
+
+/* 이름 첫 글자 동그라미 */
+.user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #18191F;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.user-name {
+  font-size: 14px;
+  color: #18191F;
+}
+
+.logout-btn {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid #E3E6EB;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  color: #5B6270;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #F3F4F6;
+}

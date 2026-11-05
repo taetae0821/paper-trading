@@ -1,9 +1,36 @@
-import { Link } from 'react-router'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router'
+import { api } from './api'
 import './signup.css'
 
 function Signup(){
-    const handleSubmit = (e) => {
+    const navigate = useNavigate();
+    const [form, setForm] = useState({ nickname: '', email: '', password: '', passwordConfirm: '' });
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+
+        if (form.password !== form.passwordConfirm) {
+            setError('비밀번호가 일치하지 않습니다');
+            return;
+        }
+
+        setLoading(true);
+        try {
+            await api('/signup', { method: 'POST', body: form });
+            navigate('/market');
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return(
@@ -30,22 +57,22 @@ function Signup(){
                     <form className="signup-form" onSubmit={handleSubmit}>
                         <label className="field">
                             <span>닉네임</span>
-                            <input type="text" placeholder="랭킹에 표시됩니다" required />
+                            <input type="text" name="nickname" value={form.nickname} onChange={handleChange} placeholder="랭킹에 표시됩니다" maxLength={30} required />
                         </label>
 
                         <label className="field">
                             <span>이메일</span>
-                            <input type="email" placeholder="name@example.com" required />
+                            <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="name@example.com" required />
                         </label>
 
                         <div className="field-row">
                             <label className="field">
                                 <span>비밀번호</span>
-                                <input type="password" required />
+                                <input type="password" name="password" value={form.password} onChange={handleChange} placeholder="8자 이상" minLength={8} required />
                             </label>
                             <label className="field">
                                 <span>비밀번호 확인</span>
-                                <input type="password" required />
+                                <input type="password" name="passwordConfirm" value={form.passwordConfirm} onChange={handleChange} minLength={8} required />
                             </label>
                         </div>
 
@@ -54,7 +81,11 @@ function Signup(){
                             <strong><span className="mono">10,000,000</span>원</strong>
                         </div>
 
-                        <button type="submit" className="submit-btn">가입하고 시작하기</button>
+                        {error && <p className="form-error">{error}</p>}
+
+                        <button type="submit" className="submit-btn" disabled={loading}>
+                            {loading ? '가입 중…' : '가입하고 시작하기'}
+                        </button>
                     </form>
                 </div>
             </div>

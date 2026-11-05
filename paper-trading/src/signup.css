@@ -160,3 +160,19 @@
 .submit-btn:hover {
   background-color: #2B2D36;
 }
+
+/* 서버 검사 실패 안내 */
+.form-error {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background-color: #FFF4E5;
+  color: #8A3B00;
+  font-size: 14px;
+}
+
+.submit-btn:disabled {
+  background-color: #DDE0E5;
+  color: #4B5260;
+  cursor: default;
+}

@@ -1,9 +1,30 @@
-import { Link } from 'react-router'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router'
+import { api } from './api'
 import './login.css'
 
 function Login(){
-    const handleSubmit = (e) => {
+    const navigate = useNavigate();
+    const [form, setForm] = useState({ email: '', password: '' });
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+        setLoading(true);
+        try {
+            await api('/login', { method: 'POST', body: form });
+            navigate('/market');
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return(
@@ -30,15 +51,19 @@ function Login(){
                     <form className="login-form" onSubmit={handleSubmit}>
                         <label className="login-field">
                             <span>이메일</span>
-                            <input type="email" placeholder="name@example.com" required />
+                            <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="name@example.com" required />
                         </label>
 
                         <label className="login-field">
                             <span>비밀번호</span>
-                            <input type="password" required />
+                            <input type="password" name="password" value={form.password} onChange={handleChange} required />
                         </label>
 
-                        <button type="submit" className="login-btn">로그인</button>
+                        {error && <p className="form-error">{error}</p>}
+
+                        <button type="submit" className="login-btn" disabled={loading}>
+                            {loading ? '로그인 중…' : '로그인'}
+                        </button>
                     </form>
                 </div>
             </div>
